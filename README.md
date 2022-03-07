@@ -1,2 +1,1 @@
-# Spotibot
-Spotify chatbot  &amp; recommendations systems
+# Spotib0t
