@@ -23,7 +23,6 @@ async def on_ready():
 async def on_message(message):
     print(message.content)
     await bot.process_commands(message)
-    print("end")
     #await message.channel.send(message.content)
     
 @bot.command(name='delete', aliases=['del', 'd'])
@@ -33,5 +32,18 @@ async def delete(context, number: int):
     for each_message in messages:
         print(each_message)
         await each_message.delete()
+        
+        
+        
+        
+@bot.command(name='test')
+async def test(context):
+    print('\nTest:')
+    messages = await context.channel.history(limit = number + 1).flatten()
+    for each_message in messages:
+        print(each_message)
+        await each_message.delete()
+        
+
     
 bot.run(SPOTIB0T_TOKEN)
