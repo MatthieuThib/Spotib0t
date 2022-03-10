@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 
 from giphy_api import get_gifs_url, get_random_gif
 
+import re
+
 
 load_dotenv()
 SPOTIB0T_TOKEN = os.environ.get("TOKEN")
@@ -29,14 +31,20 @@ async def on_message(message):
     
     if(message.author.bot != True):
         words = message.content.split(" ")
-        vulgarity = [True if element in ['fuck','bitch','fuck','fucking','motherfucker'] else False for element in words]
+
+        vulgarity = [True if element in ['fuck','bitch','fucking','motherfucker','shit'] else False for element in words]
+        print(message.content)
 
         if message.content.lower().startswith(('hi','hello','good morning', 'good evening', 'hey', 'wesh','hola')):
             await message.channel.send("Hey " + message.author.name + " ! I'm Spotibot 😎. \nI'm your new best friend (yes I assure you 🐣).\n I love music on Spotify ! I know everything 🎧 \nWhat can I do for you ? 😁")
         
-        elif True in vulgarity: 
+        if True in vulgarity: 
             await message.channel.send("Mhm " + message.author.name + " , watch your language please ! 🤨🤯")
             message.content = ""
+
+        elif re.match(r'\s(\\?\<artist>artist|singer|group)\ssing\s(\\?\<song>([a-zA-Z0-9]+\s)+)\\?', message.content) : 
+            print('match')
+
                  
     await bot.process_commands(message)
 
