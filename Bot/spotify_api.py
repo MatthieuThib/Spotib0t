@@ -41,27 +41,28 @@ def get_artist(spotify, track):
     results = spotify.search(q= track, type='track')
     return results['tracks']['items'][0]['artists'][0]['name'] + " sang " + track
 
-#def get_response(spotify, user_input):
-#    if((re.search("artist|singer|group|boysband|band|girlsband", user_input)) and (re.search("related to|similar to|like", user_input))):
-#        pattern = re.compile(r"related to |similar to |like ")
-#        splitted=pattern.split(user_input)
-#        artist = splitted[-1][:-1]
-#        return (get_n_related_artists(spotify, artist))
-#    elif(re.search("artist|singer|group|boysband|band|girlsband", user_input)):
-#        pattern = re.compile(r"sang |sing ")
-#        splitted=pattern.split(user_input)
-#        track = splitted[-1][:-1]
-#        return (get_artist(track, USER_SPOTIFY_TOKEN))
-#    elif(re.search("(W|w)ho", user_input)):
-#        pattern = re.compile(r"sang |sing ")
-#        splitted=pattern.split(user_input)
-#        track = splitted[-1][:-1]
-#        print("\n Track:", track)
-#        return (get_artist(track, USER_SPOTIFY_TOKEN))
-#    elif(re.search('best musics|best music|top|top musics|top tracks', user_input)):
-#        pattern = re.compile(r'of |from |by ')
-#        splitted=pattern.split(user_input)
-#        artist = splitted[-1][:-1]
-#        return (get_top_n_tracks(spotify, artist))
-#    else:
-#        return ("I **didn't** get it. Could you rephrase please ?")
+def get_response(spotify, user_input):
+    user_input = user_input.lower()
+    if user_input[-1] != "?": user_input += " ?"
+    if((re.search("artist|singer|group|boysband|band|girlsband", user_input)) and (re.search("related to|similar to|like", user_input))):
+        pattern = re.compile(r"related to |similar to |like ")
+        splitted=pattern.split(user_input)
+        artist = splitted[-1][:-1]
+        return (get_n_related_artists(spotify, artist))
+    elif(re.search("artist|singer|group|boysband|band|girlsband", user_input)):
+        pattern = re.compile(r"sang |sing |of")
+        splitted=pattern.split(user_input)
+        track = splitted[-1][:-1]
+        return (get_artist(spotify, track))
+    elif(re.search("(W|w)ho", user_input)):
+        pattern = re.compile(r"sang |sing ")
+        splitted=pattern.split(user_input)
+        track = splitted[-1][:-1]
+        return (get_artist(spotify, track))
+    elif(re.search('best musics|best music|top|top musics|top tracks', user_input)):
+        pattern = re.compile(r'of |from |by ')
+        splitted=pattern.split(user_input)
+        artist = splitted[-1][:-1]
+        return (get_top_n_tracks(spotify, artist))
+    else:
+        return ("I **didn't** get it. Could you rephrase please ?")
