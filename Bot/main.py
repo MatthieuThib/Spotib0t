@@ -1,38 +1,27 @@
 import os
-#import json
-
 import discord
 from discord.ext import commands
-
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-
-
 from giphy_api import *
 from spotify_api import *
-
-import re
-
 from dotenv import load_dotenv
+
+# Set up environment variables
 load_dotenv()
-SPOTIB0T_TOKEN = os.environ.get("TOKEN")
+SPOTIB0T_TOKEN = os.environ.get("DISCORD_TOKEN")
 API_GIPHY_TOKEN = os.environ.get("API_GIPHY_TOKEN")
 SPOTIPY_CLIENT_ID = os.environ.get("SPOTIPY_CLIENT_ID")
 SPOTIPY_CLIENT_SECRET = os.environ.get("SPOTIPY_CLIENT_SECRET")
+
+# Set up discord settings
 DEFAULTS_INTENTS = discord.Intents.default()
 DEFAULTS_INTENTS.members = True 
-PREFIX_COMMAND = "$"
-
-#async def verify_token():
-#    if len(os.environ.get("API_SPOTIFY_TOKEN")) > 0:
-#       return 'Valid Token ✅'
-#    else: 
-#       return 'Invalid Token ❌' 
-        
-        
+PREFIX_COMMAND = "$" 
+     
+# 
 bot = commands.Bot(command_prefix = PREFIX_COMMAND, intents = DEFAULTS_INTENTS)
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
-
 
 @bot.event
 async def on_ready():
@@ -60,12 +49,11 @@ async def on_message(message):
             print(' > user command')
         
         else: 
-            r = get_response(spotify, message.content)
-            await message.channel.send(r)
+            response = get_response(spotify, message.content)
+            await message.channel.send(response)
        
     await bot.process_commands(message)
         
-
 def check_vulgarity(message) :
     words = message.content.split(" ")
     vulgarity = [True if element in ['fuck','bitch','fucking','motherfucker','shit', 'shut up', 'bastard', 'jerk'] else False for element in words]
@@ -85,6 +73,5 @@ async def quit():
 async def gif(context, name: str):
     gf = get_gifs_url(name, API_GIPHY_TOKEN)
     await context.channel.send(gf)
-    
     
 bot.run(SPOTIB0T_TOKEN)
