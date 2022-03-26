@@ -55,14 +55,54 @@ The prefix of Spotib0t is ```$``` but you can change it in *main.py*.
 + ```$quit ``` -> Disconnects the bot from the server
 
 ## :pushpin: Examples
+
 <details>
 <summary>Get Spotify user informations</summary>
-
-    
+You can get the followers of a spotify user just by tiping the username. The user can be an artist as well as a regular spotify user.
 <p align="center">
-<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/EminemInformation.png" width="1000" />
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/EminemInformation.png" width="600" />
 </p>  
-    
+</details>
+
+<details>
+<summary>Get singer of a track</summary>
+You can get the singer of a track just by asking to Spotib0t:
+<p align="center">
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/KidCudiSangCudiZone.png" width="600" />
+</p>  
+</details>
+
+<details>
+<summary>Get an artist's top tracks</summary>
+You can get the current top tracks of an artist by asking to Spotib0t:
+<p align="center">
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/KidCudiTopTrack.png" width="600" />
+</p>  
+</details>
+
+<details>
+<summary>Get an artist's last albums</summary>
+Spotib0t can get you the last albums of an artist:
+<p align="center">
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/DaftPunkAlbums.png" width="600" />
+</p>  
+</details>
+
+
+<details>
+<summary>Get an artist recommendation</summary>
+Using spotify API related artists endpoint, Spotib0t can get you similar artists:
+<p align="center">
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/DrakeSimilarArtists.png" width="600" />
+</p>  
+</details>
+
+<details>
+<summary>Get track recommendations</summary>
+With a kmeans clustering on a spotify dataset, Spotib0t can get you similar tracks:
+<p align="center">
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/CudiZoneSimilarTracks.png" width="600" />
+</p>  
 </details>
 
 ## :clap: Contributors
