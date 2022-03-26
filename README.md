@@ -1,7 +1,7 @@
-<p float="left">
-    <img style="vertical-align:middle" src="https://github.com/MatthieuThib/Spotib0t/blob/main/Logos/Spotib0t_light.png?raw=true" width="200">
-    <strong style="margin-left:80px; font-size:60px; color:#1DB954"> Spotib0t</strong>
+<p align="center">
+    <img style="vertical-align:middle" src="https://github.com/MatthieuThib/Spotib0t/blob/main/Logos/Spotib0t_light.png?raw=true" width="150">
 </p>
+
 
 <br>
 
@@ -10,7 +10,7 @@ Spotibot is a bot for discord. It is build in python using [discord.py](https://
 The idea is to interact with Spotib0t to get musical data about a song or an artist.
 
 ## :speech_balloon: Chatbot
-Using regular expressions, spotib0t is able to detect an artist name or a song title in some patterns. Then, it fetchs data from the [spotify API](https://developer.spotify.com/documentation/web-api/) by calling [spotipy](https://spotipy.readthedocs.io/en/2.19.0) library functions.
+Using regular expressions, Spotib0t is able to detect an artist name or a song title in some patterns. Then, it fetchs data from the [spotify API](https://developer.spotify.com/documentation/web-api/) by calling [spotipy](https://spotipy.readthedocs.io/en/2.19.0) library functions.
 Spotib0t can get you:
 - The singer of a track
 - The lasts albums of an artist
@@ -20,7 +20,8 @@ Spotib0t can get you:
 ## :bulb: Recommendation system
 
 As mentionned before, The spotify API provides an endpoint to get the related artists of an artist, but it is based on the uses of spotify user so it is not very personnal.
-That's why spotib0t uses a recommendation system build ...
+That's why we build a specific recommendation system for Spotib0t.
+Using a spotify dataset about music features, we were able to set up a kmeans clustering algorithm to find similar tracks.
 
 ## :thinking: How to set up ?
 
@@ -52,9 +53,9 @@ That's why spotib0t uses a recommendation system build ...
 
 ## :mag_right: Commands
 The prefix of Spotib0t is ```$``` but you can change it in *main.py*.
-+ ```$gif ```
-+ ```$del ```
-+ ```$quit ```
++ ```$gif gif_name``` -> Gets you a gif from Giphy
++ ```$del number_of_messages``` -> Deletes the last number_of_messages messages
++ ```$quit ``` -> Disconnects the bot from the server
 
 ## :pushpin: Example 
 <details>
