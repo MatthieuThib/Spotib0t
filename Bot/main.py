@@ -22,7 +22,7 @@ DEFAULTS_INTENTS = discord.Intents.default()
 DEFAULTS_INTENTS.members = True 
 PREFIX_COMMAND = "$" 
      
-# 
+# Instancing the bot and the spotify client
 bot = commands.Bot(command_prefix = PREFIX_COMMAND, intents = DEFAULTS_INTENTS)
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
@@ -32,29 +32,28 @@ async def on_ready():
     
 @bot.event
 async def on_message(message):
-    if(message.author.bot != True): # Ignore bot messages
+    # Ignore bot messages to prevent self-response
+    if(message.author.bot == False and not message.content.lower().startswith(('$'))): 
 
-        print(" >", message.content)
-
-        if check_vulgarity(message): 
+        # Check if the message contains vulgarity
+        if check_vulgarity(message):
             await message.channel.send("Mhm **" + message.author.name + "** , watch your language please ! 🤨🤯")
             message.content = ""
 
+        # Check and respond to greetings
         elif message.content.lower().startswith(('hi','hello','good morning', 'good evening', 'hey','hola', 'yo', 'wesh')):
             await message.channel.send("Hey **" + message.author.name + " !** I'm **Spotibot** 😎. \nI'm your new best friend (yes I assure you 🐣).\nI love music on Spotify ! I know everything 🎧 \nWhat can I do for you ? 😁")
-            #await message.channel.send("If you want to use **spotify** features, just copy past the following code in your browser : \nhttps://accounts.spotify.com/authorize?client_id=fe17030c83d54d098e9a70e4db39e2ab&scope=playlist-read-private&response_type=code&redirect_uri=https%3A%2F%2Fseb.com%2F")
-            #await message.channel.send("Enter **$token** followed by the link you were redirected to ")
-            
+
+        # Check and respond to goodbye-like messages
         elif(re.search("(B|b)ye|(B|b)ye bye|(H|h)ave a nice day|(S|s)ayonara|(A|a)u revoir|(B|b)onne journée|(E|e)xit|(K|k)ill", message.content)):
             await message.channel.send("Bye **" + message.author.name + " !** \n See you soon 🐣") 
-        
-        elif(message.content.lower().startswith(('$'))): # Ignore commands
-            print(' > user command')
-        
+    
+        # Analyse message and send a response
         else: 
             response = get_response(spotify, message.content)
             await message.channel.send(response)
        
+    # Run bot commands if needed
     await bot.process_commands(message)
         
 def check_vulgarity(message) :
@@ -77,4 +76,5 @@ async def gif(context, name: str):
     gf = get_gifs_url(name, API_GIPHY_TOKEN)
     await context.channel.send(gf)
     
+# Run Spotib0t
 bot.run(SPOTIB0T_TOKEN)
