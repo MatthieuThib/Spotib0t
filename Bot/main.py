@@ -3,9 +3,12 @@ import discord
 from discord.ext import commands
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+from dotenv import load_dotenv
+
+# Python files
 from giphy_api import *
 from spotify_api import *
-from dotenv import load_dotenv
+from recommendation_system import *
 
 # Set up environment variables
 load_dotenv()
