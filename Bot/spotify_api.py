@@ -6,7 +6,9 @@ from recommendation_system import recommend_tracks
 def get_artist_id(spotify, name):
     """ Returns the spotify id of an artist """
     results = spotify.search(q='artist:' + name, type='artist')
-    return results['artists']['items'][0]['id']
+    if len(results['artists']['items'])>0:
+        return results['artists']['items'][0]['id']
+    return ""
 
 def get_track_id(spotify, track):
     """ Returns the spotify id of a track """
@@ -19,23 +21,27 @@ def get_user_id(spotify, username):
     return user['uri']
 
 def get_track_info(spotify, track):
-    results = spotify.search(q = track, type='track')
-    return results['tracks']['items'][0]['name'] + " - " + results['tracks']['items'][0]['album']['artists'][0]['name'] + "   " + results['tracks']['items'][0]['external_urls']['spotify']
-
+    results = spotify.search(q = track.replace("-", ""), type='track')
+    if 'tracks' in results.keys():
+        return results['tracks']['items'][0]['name'] + " - " + results['tracks']['items'][0]['album']['artists'][0]['name'] + "   " + results['tracks']['items'][0]['external_urls']['spotify']
+    return ""
+    
 def get_top_n_tracks(spotify, artist, n = 10):
     """ Returns the n most popular tracks of an artist """
     artist_id = get_artist_id(spotify, artist)
     results = spotify.artist_top_tracks(artist_id)
-    tracks = "**" + artist + "**'s top " + str(n) + " tracks:\n"
-    for i in range(n):
-        tracks = tracks + str(i+1) + " : " + results['tracks'][i]['name'] + "   " + results['tracks'][i]['external_urls']['spotify'] + "\n"
-    return tracks
+    if 'tracks' in results.keys():
+        tracks = "**" + artist.capitalize() + "**'s top " + str(n) + " tracks:\n"
+        for i in range(n):
+            tracks = tracks + str(i+1) + " : " + results['tracks'][i]['name'] + "   " + results['tracks'][i]['external_urls']['spotify'] + "\n"
+        return tracks
+    return ""
 
 def get_last_n_albums(spotify, artist, n = 10):
     """ Returns the n most recent albums of an artist """
     artist_id = get_artist_id(spotify, artist)
     results = spotify.artist_albums(artist_id, album_type='album', limit = 50)
-    albums = "**" + artist + "**'s albums:\n"
+    albums = "**" + artist.capitalize() + "**'s albums:\n"
     if n > int(results['total']): n = int(results['total'])
     for i in range(n):
         albums = albums + results['items'][i]['name'] + "   " + results['items'][i]['external_urls']['spotify'] + "\n"
@@ -45,7 +51,7 @@ def get_n_related_artists(spotify, artist, n = 10):
     """ Returns the n most related artists of an artist """
     artist_id = get_artist_id(spotify, artist)
     results = spotify.artist_related_artists(artist_id)
-    similar_artist = "**" + artist + "**'s similar artists:\n"
+    similar_artist = "**" + artist.capitalize() + "**'s similar artists:\n"
     if n > 20: n = 20
     for i in range(n):
         similar_artist = similar_artist + results['artists'][i]['name'] + "   " + results['artists'][i]['external_urls']['spotify'] + "\n"
@@ -64,7 +70,7 @@ def get_user_info(spotify, username):
 def get_artist(spotify, track):
     """ Returns the artist of a track """
     results = spotify.search(q= track, type='track')
-    return results['tracks']['items'][0]['artists'][0]['name'] + " sang " + track
+    return "**" + results['tracks']['items'][0]['artists'][0]['name'] + "** sang " + track + "\n" + results['tracks']['items'][0]['external_urls']['spotify']
 
 def get_track_name_and_year(spotify, track):
     """ Returns the name and year of a track (dict)"""
@@ -129,6 +135,12 @@ def get_response(spotify, user_input):
         artist = splitted[-1][:-1]
         return (get_top_n_tracks(spotify, artist))
     
+    elif(re.search('last albums|last album', user_input_lower)):
+        pattern = re.compile(r'of |from |by ')
+        splitted=pattern.split(user_input)
+        artist = splitted[-1][:-1]
+        return (get_last_n_albums(spotify, artist))
+    
     elif((re.search("music|track|song|musics|tracks|songs", user_input_lower)) and (re.search("similar to |like", user_input_lower))):
         pattern = re.compile(r"similar to |like ")
         splitted=pattern.split(user_input)
@@ -136,7 +148,9 @@ def get_response(spotify, user_input):
         song_vectors = get_song_vectors(spotify, [track])
         
         reco = "**" + track.capitalize() + "**'s similar tracks:\n"
-        for recommended_track in recommend_tracks(song_vectors)["name"]:
+        tracksss = recommend_tracks(song_vectors)["name"]
+        for recommended_track in tracksss:
+            print(recommended_track)
             reco += get_track_info(spotify, recommended_track) + "\n"
         return reco
     
