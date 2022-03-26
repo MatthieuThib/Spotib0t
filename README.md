@@ -2,9 +2,6 @@
     <img style="vertical-align:middle" src="https://github.com/MatthieuThib/Spotib0t/blob/main/Logos/Spotib0t_light.png?raw=true" width="150">
 </p>
 
-
-<br>
-
 ## :musical_note: What is **Spotib0t** ?
 Spotibot is a bot for discord. It is build in python using [discord.py](https://github.com/Rapptz/discord.py) library.
 The idea is to interact with Spotib0t to get musical data about a song or an artist.
@@ -57,10 +54,15 @@ The prefix of Spotib0t is ```$``` but you can change it in *main.py*.
 + ```$del number_of_messages``` -> Deletes the last number_of_messages messages
 + ```$quit ``` -> Disconnects the bot from the server
 
-## :pushpin: Example 
+## :pushpin: Examples
 <details>
-<summary>Example</summary>
-SCREENSHOTS HERE
+<summary>Get Spotify user informations</summary>
+
+    
+<p align="center">
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/EminemInformation.png" width="1000" />
+</p>  
+    
 </details>
 
 ## :clap: Contributors
