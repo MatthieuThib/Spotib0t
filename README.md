@@ -1,4 +1,4 @@
-<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Logos/Spotib0t_light.png?raw=true" width="200" align="right"/>
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Images/join.png" width="200" align="right"/>
 
 ## Click here to [add **Spotib0t** to your server](https://discord.com/api/oauth2/authorize?client_id=950439738106597467&permissions=8&scope=bot)
 
