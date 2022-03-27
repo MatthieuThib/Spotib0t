@@ -1,10 +1,6 @@
-<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Logos/Spotib0t_light.png?raw=true" width="150" align="right" />
-
-<br>
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Logos/Spotib0t_light.png?raw=true" width="200" align="right" />
 
 ## Click here to [add **Spotib0t** to your server](https://discord.com/api/oauth2/authorize?client_id=950439738106597467&permissions=8&scope=bot)
-
-<br>
 
 ## :musical_note: What is **Spotib0t** ?
 Spotibot is a bot for discord. It is build in python using [discord.py](https://github.com/Rapptz/discord.py) library.
@@ -28,9 +24,10 @@ Using a spotify dataset about music features, we were able to set up a kmeans cl
 
 ## :mag_right: Commands
 The prefix of Spotib0t is ```$``` but you can change it in *main.py*.
-+ ```$gif gif_name``` -> Gets you a gif from Giphy
-+ ```$del number_of_messages``` -> Deletes the last number_of_messages messages
-+ ```$quit ``` -> Disconnects the bot from the server
++ ```$join ``` -> Spotib0t logs in
++ ```$quit ``` -> Spotib0t logs out
++ ```$gif gif_name``` -> Spotib0t gets you a gif from [*giphy*](https://giphy.com)
++ ```$del number_of_messages``` -> Spotib0t deletes the last number_of_messages messages
 
 ## :pushpin: Examples
 
