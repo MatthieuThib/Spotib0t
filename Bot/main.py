@@ -32,6 +32,7 @@ async def on_ready():
     
 @bot.event
 async def on_message(message):
+    print("> ", message.content)
     # Ignore bot messages to prevent self-response
     if(message.author.bot == False and not message.content.lower().startswith(('$'))): 
 
@@ -57,9 +58,21 @@ async def on_message(message):
     await bot.process_commands(message)
         
 def check_vulgarity(message) :
+    """ Check if the message contains bad words """
     words = message.content.split(" ")
     vulgarity = [True if element in ['fuck','bitch','fucking','motherfucker','shit', 'shut up', 'bastard', 'jerk'] else False for element in words]
     return True in vulgarity 
+            
+            
+            
+@bot.command(name = "join", aliases = ["j"]) 
+async def join():
+    bot.login(SPOTIB0T_TOKEN)
+    
+@bot.command(name='quit', aliases=['q'])
+async def quit():
+    bot.logout()
+    
             
 @bot.command(name='delete', aliases=['del', 'd'])
 async def delete(context, number: int):
@@ -67,14 +80,11 @@ async def delete(context, number: int):
     for message in messages:
         await message.delete()
          
-@bot.command(name='quit', aliases=['Quit', 'q', 'Q', 'stop', 'Stop'])
-async def quit():
-    bot.logout()
-       
 @bot.command(name = "gif", aliases=['GIF','Gif'])
 async def gif(context, name: str):
     gf = get_gifs_url(name, API_GIPHY_TOKEN)
     await context.channel.send(gf)
+    
     
 # Run Spotib0t
 bot.run(SPOTIB0T_TOKEN)
