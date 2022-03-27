@@ -86,6 +86,15 @@ With a kmeans clustering on a spotify dataset, Spotib0t can get you similar trac
 <br>
 </details>
 
+<details>
+<summary>Video</summary>
+How to add Spotib0t and live examples
+<p align="left">
+<img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Images/Spotib0t.gif" width="600" />
+</p>  
+<br>
+</details>
+
 ## :clap: Contributors
 + TEMPO Chloé - [@chlotmpo](https://github.com/chlotmpo)
 + YUNG Sébastien - [@SebYg00](https://github.com/SebYg00)
