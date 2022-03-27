@@ -150,7 +150,6 @@ def get_response(spotify, user_input):
         reco = "**" + track.capitalize() + "**'s similar tracks:\n"
         tracksss = recommend_tracks(song_vectors)["name"]
         for recommended_track in tracksss:
-            print(recommended_track)
             reco += get_track_info(spotify, recommended_track) + "\n"
         return reco
     
@@ -159,6 +158,3 @@ def get_response(spotify, user_input):
         splitted=pattern.split(user_input)
         user = splitted[-1][:-1]
         return get_user_info(spotify, user.replace(" ", ""))
-        
-    else:
-        print("I **didn't** get it. Could you rephrase please ?")
