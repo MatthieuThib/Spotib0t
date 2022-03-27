@@ -6,7 +6,7 @@
 Spotibot is a bot for discord. It is build in python using [discord.py](https://github.com/Rapptz/discord.py) library. <br>
 The idea is to interact with Spotib0t to get musical data about a song or an artist.
 
-<br>
+<hr>
 
 ## :speech_balloon: Chatbot
 Using regular expressions, Spotib0t is able to detect an artist name or a song title in some patterns. Then, it fetchs data from the [spotify API](https://developer.spotify.com/documentation/web-api/) by calling [spotipy](https://spotipy.readthedocs.io/en/2.19.0) library functions.
