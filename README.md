@@ -24,10 +24,10 @@ Using a spotify dataset about music features, we were able to set up a kmeans cl
 
 ## :mag_right: Commands
 The prefix of Spotib0t is ```$``` but you can change it in *main.py*.
-+ ```$join ``` -> Spotib0t logs in
-+ ```$quit ``` -> Spotib0t logs out
-+ ```$gif gif_name``` -> Spotib0t gets you a gif from [*giphy*](https://giphy.com)
-+ ```$del number_of_messages``` -> Spotib0t deletes the last number_of_messages messages
++ ```$join``` -> Spotib0t logs in
++ ```$quit``` -> Spotib0t logs out
++ ```$gif``` -> Spotib0t gets you a gif from [*giphy*](https://giphy.com) (gif_name)
++ ```$del``` -> Spotib0t deletes the last messages (number_of_messages)
 
 ## :pushpin: Examples
 
@@ -36,7 +36,8 @@ The prefix of Spotib0t is ```$``` but you can change it in *main.py*.
 You can get the followers of a spotify user just by tiping the username. The user can be an artist as well as a regular spotify user.
 <p align="left">
 <img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/EminemInformation.png" width="600" />
-</p>  
+</p>
+<br>
 </details>
 
 <details>
@@ -45,6 +46,7 @@ You can get the singer of a track just by asking to Spotib0t:
 <p align="left">
 <img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/KidCudiSangCudiZone.png" width="600" />
 </p>  
+<br>
 </details>
 
 <details>
@@ -53,6 +55,7 @@ You can get the current top tracks of an artist by asking to Spotib0t:
 <p align="left">
 <img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/KidCudiTopTrack.png" width="600" />
 </p>  
+<br>
 </details>
 
 <details>
@@ -61,6 +64,7 @@ Spotib0t can get you the last albums of an artist:
 <p align="left">
 <img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/DaftPunkAlbums.png" width="600" />
 </p>  
+<br>
 </details>
 
 
@@ -70,6 +74,7 @@ Using the spotify API related artists endpoint, Spotib0t can get you similar art
 <p align="left">
 <img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/DrakeSimilarArtists.png" width="600" />
 </p>  
+<br>
 </details>
 
 <details>
@@ -78,6 +83,7 @@ With a kmeans clustering on a spotify dataset, Spotib0t can get you similar trac
 <p align="left">
 <img src="https://github.com/MatthieuThib/Spotib0t/blob/main/Examples/CudiZoneSimilarTracks.png" width="600" />
 </p>  
+<br>
 </details>
 
 ## :clap: Contributors
